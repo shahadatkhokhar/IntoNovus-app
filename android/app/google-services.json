@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "618088488048",
+    "firebase_url": "https://intonovus-auth.firebaseio.com",
+    "project_id": "intonovus-auth",
+    "storage_bucket": "intonovus-auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618088488048:android:ef38dd103d8e1ebbb2a8b5",
+        "android_client_info": {
+          "package_name": "com.intonovus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618088488048-m079lg6itkmb3vgnm0la84nbls1jsde0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUyyYJPeFQ9rhviug4ZFbszcqSV77j4to"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "618088488048-m079lg6itkmb3vgnm0la84nbls1jsde0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
