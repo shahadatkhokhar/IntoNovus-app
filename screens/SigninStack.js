@@ -8,18 +8,18 @@ import ContactScreen from './Container/ContactUs.js'
 import AboutScreen from './Container/About'
 
 const Drawer = createDrawerNavigator()
-export default function SigninStack() {
+const HomeStack = createStackNavigator()
+const ContactStack = createStackNavigator()
+const AboutStack = createStackNavigator()
 
+function HomeStackScreen(){
   return (
-
-    <NavigationContainer>
-
-      <Drawer.Navigator 
-      initialRouteName='Home'>
-        <Drawer.Screen
-        name="Home" 
-        component={HomeScreen} 
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
         options={{  
+          title:"Home",
           headerStyle:{
             backgroundColor:'#000000',
           },
@@ -28,11 +28,65 @@ export default function SigninStack() {
             color:'#fff'
           },
         }}
+      />
+    </HomeStack.Navigator>
+  );
+}
+
+function ContactStackScreen(){
+  return (
+    <ContactStack.Navigator>
+      <HomeStack.Screen
+        name="ContactScreen"
+        component={ContactScreen}
+        options={{  
+          title:"Contact Us",
+          headerStyle:{
+            backgroundColor:'#000000',
+          },
+          headerTitleStyle:{
+            fontWeight:'bold',
+            color:'#fff'
+          },
+        }}
+      />
+    </ContactStack.Navigator>
+  );
+}
+function AboutStackScreen(){
+  return (
+    <AboutStack.Navigator>
+      <AboutStack.Screen
+        name="AboutScreen"
+        component={AboutScreen}
+        options={{  
+          title:"About Us",
+          headerStyle:{
+            backgroundColor:'#000000',
+          },
+          headerTitleStyle:{
+            fontWeight:'bold',
+            color:'#fff'
+          },
+        }}
+      />
+    </AboutStack.Navigator>
+  );
+}
+export default function SigninStack() {
+
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator 
+      initialRouteName='Home'>
+        <Drawer.Screen
+        name="Home" 
+        component={HomeStackScreen} 
           />
 
         <Drawer.Screen
           name="Contact Us" 
-          component={ContactScreen} 
+          component={ContactStackScreen} 
           options={{  
             headerStyle:{
               backgroundColor:'#000000',
@@ -46,7 +100,7 @@ export default function SigninStack() {
 
         <Drawer.Screen
           name="About" 
-          component={AboutScreen} 
+          component={AboutStackScreen} 
           options={{  
             headerStyle:{
               backgroundColor:'#000000',
