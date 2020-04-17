@@ -1,5 +1,5 @@
 import * as React from 'react'
-
+import {Image, TouchableOpacity} from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer'
@@ -29,7 +29,9 @@ function HomeStackScreen(){
             fontWeight:'bold',
             color:'#fff'
           },
-        }}/>
+          
+        }}
+        />
     </HomeStack.Navigator>
   );
 }
