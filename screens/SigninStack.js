@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import {createDrawerNavigator} from '@react-navigation/drawer'
+import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer'
 import HomeScreen from './Container/Home.js'
 import ContactScreen from './Container/ContactUs.js'
 import AboutScreen from './Container/About'
@@ -11,6 +11,8 @@ const Drawer = createDrawerNavigator()
 const HomeStack = createStackNavigator()
 const ContactStack = createStackNavigator()
 const AboutStack = createStackNavigator()
+
+
 
 function HomeStackScreen(){
   return (
@@ -27,12 +29,10 @@ function HomeStackScreen(){
             fontWeight:'bold',
             color:'#fff'
           },
-        }}
-      />
+        }}/>
     </HomeStack.Navigator>
   );
 }
-
 function ContactStackScreen(){
   return (
     <ContactStack.Navigator>
@@ -78,38 +78,31 @@ export default function SigninStack() {
   return (
     <NavigationContainer>
       <Drawer.Navigator 
-      initialRouteName='Home'>
+      initialRouteName='Home'
+      drawerStyle={{
+        backgroundColor:'#000000',
+        width:200,
+        }}
+        drawerContentOptions={{
+          activeTintColor:"#fff",
+          inactiveTintColor:"#fff"
+        }}
+  
+      
+      >
         <Drawer.Screen
         name="Home" 
-        component={HomeStackScreen} 
+        component={HomeStackScreen}
           />
 
         <Drawer.Screen
           name="Contact Us" 
           component={ContactStackScreen} 
-          options={{  
-            headerStyle:{
-              backgroundColor:'#000000',
-            },
-            headerTitleStyle:{
-              fontWeight:'bold',
-              color:'#fff'
-            },
-          }}
           />
 
         <Drawer.Screen
           name="About" 
-          component={AboutStackScreen} 
-          options={{  
-            headerStyle:{
-              backgroundColor:'#000000',
-            },
-            headerTitleStyle:{
-              fontWeight:'bold',
-              color:'#fff'
-            },
-          }}
+          component={AboutStackScreen}
           />
       </Drawer.Navigator>
     </NavigationContainer>

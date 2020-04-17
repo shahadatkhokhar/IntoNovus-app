@@ -64,15 +64,19 @@ const styles = StyleSheet.create({
 	Home:
 	{
 		flex:1,
-		justifyContent:'center',
-		alignItems:'center',
 		padding:10,
-		backgroundColor:'#fff'
+		backgroundColor:'#fff',
+		justifyContent:"center",
+		alignItems:"center"
+
 	},
 	Loading: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
+	},
+	text:{
+		fontSize:40
 	}
 });
 
