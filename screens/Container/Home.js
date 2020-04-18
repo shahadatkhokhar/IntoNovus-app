@@ -22,7 +22,7 @@ export default class HomeScreen extends Component{
     }
     handleLogout=()=>{
         firebase.auth().signOut()
-        .then(()=>this.props.navigation.navigate('Login'))
+        //.then(()=>this.props.navigation.navigate('Login'))
         .catch(error => this.setState({errorMessage:error.message}));
     }
     render(){

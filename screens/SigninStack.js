@@ -75,6 +75,7 @@ function AboutStackScreen(){
     </AboutStack.Navigator>
   );
 }
+
 export default function SigninStack() {
 
   return (
@@ -98,7 +99,7 @@ export default function SigninStack() {
           />
 
         <Drawer.Screen
-          name="Contact Us" 
+          name="Contact" 
           component={ContactStackScreen} 
           />
 
