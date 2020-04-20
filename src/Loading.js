@@ -1,11 +1,11 @@
 import 'react-native-gesture-handler'
 import React, {Component} from 'react'
-import firebase from 'react-native-firebase'
+import auth from '@react-native-firebase/auth'
 import SplashScreen from 'react-native-splash-screen'
 
 export default class Loading extends Component{
     componentDidMount(){
-        firebase.auth()
+        auth()
         .onAuthStateChanged((user)=>{
             if(user)
             {

@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 import styles from '../Styles'
 import {createStackNavigator} from '@react-navigation/stack'
-import firebase from 'react-native-firebase'
+import auth from '@react-native-firebase/auth'
 
 
 export default class HomeScreen extends Component{
@@ -17,11 +17,11 @@ export default class HomeScreen extends Component{
         errorMessage:null
     }
     componentDidMount(){
-        const {currentUser} = firebase.auth()
+        const {currentUser} = auth()
         this.setState({currentUser})
     }
     handleLogout=()=>{
-        firebase.auth().signOut()
+        auth().signOut()
         //.then(()=>this.props.navigation.navigate('Login'))
         .catch(error => this.setState({errorMessage:error.message}));
     }

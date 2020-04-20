@@ -9,8 +9,8 @@ import {
 	TouchableOpacity
 } from 'react-native'
 import styles from '../Styles'
-import firebase from 'react-native-firebase'
-
+import firestore from '@react-native-firebase/firestore'
+import auth from '@react-native-firebase/auth'
 
 export default class SignupScreen extends Component{
 	state={
@@ -43,12 +43,18 @@ export default class SignupScreen extends Component{
 			  alert("Enter password")
 		  }
 		  else{
-		  firebase
-			.auth()
+			auth()
 			.createUserWithEmailAndPassword(this.state.email, this.state.password)  
 			.catch(error => this.setState({errorMessage:error.message}))
 			.then(()=>{
-				firebase.auth().currentUser.sendEmailVerification();
+				var user =auth().currentUser
+				user.sendEmailVerification();
+				var dbUser = firestore().collection('Users')
+				.doc(user.uid).set({
+					name:this.state.name,
+					institute:this.state.institute,
+					email:this.state.email
+				})
 				this.props.navigation.navigate('Login')
 			})
 		  }

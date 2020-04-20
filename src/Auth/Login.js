@@ -9,7 +9,7 @@ import {
 	TouchableOpacity
 } from 'react-native'
 import styles from '../Styles'
-import firebase from 'react-native-firebase'
+import auth from '@react-native-firebase/auth'
 export default class LoginScreen extends Component{
 	state={
 		email:"",
@@ -28,13 +28,13 @@ export default class LoginScreen extends Component{
 		  }
 		  else
 		  {	
-			  firebase.auth()
+			  auth()
 			  .signInWithEmailAndPassword(this.state.email, this.state.password)
 			  .catch(error => this.setState({errorMessage:error.message}))
-			  firebase.auth().onAuthStateChanged((user)=>{	
+			  auth().onAuthStateChanged((user)=>{	
 				if(user)
 				{
-					firebase.auth().currentUser.reload()
+				auth().currentUser.reload()
 					if(user.emailVerified===false){
 						alert("Kindly verify your Email before proceeding.")	
 					}

@@ -104,10 +104,10 @@ function EventStackScreen(){
   return (
     <EventStack.Navigator>
       <EventStack.Screen
-        name="EventScreen"
+        name="ContactScreen"
         component={ContactScreen}
         options={{  
-          title:"Events",
+          title:"Contact Us",
           headerStyle:{
             backgroundColor:'#000000',
           },
@@ -146,12 +146,7 @@ export default function SigninStack() {
         <Drawer.Screen
         name="Profile" 
         component={ProfileStackScreen}
-        />
-
-        <Drawer.Screen
-        name="Events" 
-        component={EventStackScreen}
-        />
+          />
 
         <Drawer.Screen
           name="Contact" 

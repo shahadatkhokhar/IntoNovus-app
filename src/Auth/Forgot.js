@@ -9,7 +9,7 @@ import {
 	TouchableOpacity
 } from 'react-native'
 import styles from '../Styles'
-import firebase from 'react-native-firebase'
+import auth from '@react-native-firebase/auth'
 
 export default class ForgotScreen extends Component{
     state={
@@ -22,8 +22,7 @@ export default class ForgotScreen extends Component{
             alert("Enter a valid email")
         }
         else{
-            firebase
-            .auth()
+            auth()
             .sendPasswordResetEmail(this.state.regisEmail)
             .catch(error => this.setState({errorMessage:error.message}))
             .then(()=>this.props.navigation.navigate('Login'))
