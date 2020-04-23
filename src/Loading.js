@@ -5,7 +5,7 @@ import SplashScreen from 'react-native-splash-screen'
 
 export default class Loading extends Component{
     componentDidMount(){
-        auth()
+        auth()  
         .onAuthStateChanged((user)=>{
             if(user)
             {

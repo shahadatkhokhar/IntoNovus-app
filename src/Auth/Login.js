@@ -93,7 +93,7 @@ export default class LoginScreen extends Component{
 						<Text style = {styles.btnText}>SIGN UP</Text>
 					</TouchableOpacity>
 					<TouchableOpacity
-					onPress={()=>firebase.auth().currentUser.sendEmailVerification()}>
+					onPress={()=>auth().currentUser.sendEmailVerification()}>
           				<Text style={styles.forgot}>Resend Verification mail</Text>
         			</TouchableOpacity>
 			</View>

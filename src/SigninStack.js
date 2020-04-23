@@ -6,6 +6,8 @@ import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer'
 import HomeScreen from './Container/Home.js'
 import ContactScreen from './Container/ContactUs.js'
 import AboutScreen from './Container/About'
+import EventScreen from './Container/Events'
+import ProfileScreen from './Container/Profile'
 
 const Drawer = createDrawerNavigator()
 const HomeStack = createStackNavigator()
@@ -83,7 +85,7 @@ function ProfileStackScreen(){
     <ProfileStack.Navigator>
       <ProfileStack.Screen
         name="ProfileScreen"
-        component={AboutScreen}
+        component={ProfileScreen}
         options={{  
           title:"Profile",
           headerStyle:{
@@ -104,10 +106,10 @@ function EventStackScreen(){
   return (
     <EventStack.Navigator>
       <EventStack.Screen
-        name="ContactScreen"
-        component={ContactScreen}
+        name="EventScreen"
+        component={EventScreen}
         options={{  
-          title:"Contact Us",
+          title:"Events",
           headerStyle:{
             backgroundColor:'#000000',
           },
@@ -146,6 +148,11 @@ export default function SigninStack() {
         <Drawer.Screen
         name="Profile" 
         component={ProfileStackScreen}
+          />
+
+          <Drawer.Screen
+          name="Events" 
+          component={EventStackScreen} 
           />
 
         <Drawer.Screen
