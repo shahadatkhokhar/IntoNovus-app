@@ -5,6 +5,12 @@ import LoginScreen from './src/Auth/Login.js'
 import ForgotScreen from './src/Auth/Forgot.js'
 import Loading from './src/Loading.js'
 import SigninStack from './src/SigninStack.js'
+import React, {Component} from 'react'
+import {
+	View
+} from 'react-native'
+import { NavigationContainer } from '@react-navigation/native';
+
 
 const RootStack = createSwitchNavigator({
 	Login:{screen:LoginScreen},
@@ -16,7 +22,12 @@ const RootStack = createSwitchNavigator({
 	initialRouteName:'Loading'
 });
 
-const App = createAppContainer(RootStack);
-export default App;
+const AppContainer = createAppContainer(RootStack)
 
-
+export default class App extends Component{
+	render(){
+		return(
+			<AppContainer/>
+		)
+	}
+}
