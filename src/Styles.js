@@ -77,6 +77,21 @@ const styles = StyleSheet.create({
 	},
 	text:{
 		fontSize:40
+	},
+	profilePhoto:{
+		backgroundColor:"#696969",
+		borderRadius:100,
+		height:200,
+		width:200,
+		alignItems:"center",
+		justifyContent:"center",
+		marginTop:30,
+		marginBottom:10
+	},
+	profileScreen:{
+		flexDirection:'column',
+		justifyContent:'center',
+		alignItems:"center"
 	}
 });
 

@@ -20,11 +20,6 @@ export default class HomeScreen extends Component{
         const {currentUser} = auth()
         this.setState({currentUser})
     }
-    handleLogout=()=>{
-        auth().signOut()
-        //.then(()=>this.props.navigation.navigate('Login'))
-        .catch(error => this.setState({errorMessage:error.message}));
-    }
     render(){
         const {currentUser} = this.state 
         return(
@@ -47,15 +42,6 @@ export default class HomeScreen extends Component{
             <View>
 				<StatusBar backgroundColor='black' barStyle='light-content'/>
 			</View>
-            <TouchableOpacity style={styles.signupBtn} 
-                onPress= {this.handleLogout}>
-                    <Text>Logout</Text>
-            </TouchableOpacity>
-                
-                {this.state.errorMessage &&
-					<Text style={{ color: 'red' }}>
-            		    {this.state.errorMessage}
-          		    </Text>}
             </View>
             </ScrollView>
         )
