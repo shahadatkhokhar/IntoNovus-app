@@ -76,12 +76,12 @@ export default class ProfileScreen extends Component{
 
                     <View style={{flexDirection:'row',margin:5}}>
                     <Text style={{fontSize:17, fontWeight:'bold'}}>Email: </Text> 
-                    <Text style={{fontsize:17}}>{this.state.email}</Text>
+                    <Text style={{fontSize:17}}>{this.state.email}</Text>
                     </View>
 
                     <View style={{flexDirection:'row',margin:5}}>
                     <Text style={{fontSize:17, fontWeight:'bold'}}>Contact: </Text> 
-                    <Text style={{fontsize:17}}>{this.state.contact}</Text>
+                    <Text style={{fontSize:17}}>{this.state.contact}</Text>
                     </View>
 
                     <TouchableOpacity style={styles.signupBtn} 

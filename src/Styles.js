@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native'
-
+import {StyleSheet,Dimensions} from 'react-native'
+const width = Dimensions.get('window').width
 const styles = StyleSheet.create({
 	container: {
 		flex:1,
@@ -92,6 +92,12 @@ const styles = StyleSheet.create({
 		flexDirection:'column',
 		justifyContent:'center',
 		alignItems:"center"
+	},
+	EventScreen:{
+		padding:5,
+		backgroundColor:'#C4C4C4',
+		width:width,
+		borderRadius:100
 	}
 });
 
