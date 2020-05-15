@@ -119,6 +119,7 @@ function EventStackScreen(){
           },
         }}
       />
+      
     </EventStack.Navigator>
   );
 }

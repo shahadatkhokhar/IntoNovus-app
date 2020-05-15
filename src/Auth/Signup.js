@@ -58,6 +58,9 @@ export default class SignupScreen extends Component{
 			.then(()=>{
 				var user =auth().currentUser
 				user.sendEmailVerification();
+				user.updateProfile({
+					displayName:this.state.name
+				})
 				var dbUser = firestore().collection('Users')
 				.doc(user.uid).set({
 					contact:this.state.contact,

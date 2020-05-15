@@ -12,7 +12,6 @@ import styles from '../Styles'
 import firestore from '@react-native-firebase/firestore'
 import { ScrollView } from 'react-native-gesture-handler'
 
-const events =[]
 const width = Dimensions.get('window').width
 export default class EventScreen extends Component{
     getCollection =() =>{
@@ -39,13 +38,21 @@ export default class EventScreen extends Component{
         if(loading)
             return <ActivityIndicator size = 'large' color='#75db1b'/>
         return (
-            events.map((items)=>{
+            events.map((items, index)=>{
                 return (
-                    <View style ={{padding:5,backgroundColor:'#C4C4C4',width:width, borderRadius:100}}>
-                        <View style ={{paddingBottom:5, justifyContents:'center', alignItems:'center'}}>
-                        <Text style = {{fontSize:24, fontWeight:'bold', padding:5}}>{items.Name}</Text>
+                        <View style ={styles.EventScreen}>
+                            <View>
+                                <Text style = {{fontSize:24, fontWeight:'bold', padding:5}}>{items.Name}</Text>
+                            </View>
+                            <View style = {{paddingLeft:10}}>
+                                <Text style = {{fontSize:15, fontWeight:'bold',}}>:-{items.Date}, {items.Time}</Text>
+                            </View>
+                            <View style= {{flexDirection:'row', paddingLeft:10}}>
+                                <Text style = {{fontSize:15, fontWeight:'bold',}}>:-Venue: </Text>
+                                <Text>{items.Venue}</Text>
+                            </View>
                         </View>
-                    </View>
+
                 );
             })
         );
@@ -66,3 +73,4 @@ export default class EventScreen extends Component{
         )
     }
 }
+
