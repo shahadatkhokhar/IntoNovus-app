@@ -27,6 +27,7 @@ export default class EventScreen extends Component{
                 querySnapshot.forEach(documentSnapshot =>{
                     events.push({
                         ...documentSnapshot.data(),
+                        key: documentSnapshot.id
                     });
                 });
                 setEvents(events);

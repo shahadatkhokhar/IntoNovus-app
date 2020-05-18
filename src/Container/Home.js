@@ -1,42 +1,63 @@
-import React,{Component} from 'react'
+import React,{Component, useState} from 'react'
 import {
     View,
     Text,
     StatusBar,
     ScrollView,
-    TouchableOpacity
+    TouchableOpacity,
+    ActivityIndicator
 } from 'react-native'
 import styles from '../Styles'
 import {createStackNavigator} from '@react-navigation/stack'
 import auth from '@react-native-firebase/auth'
+import firestore from '@react-native-firebase/firestore'
 
-
+user = auth().currentUser
+let event
 export default class HomeScreen extends Component{
-    state = {
-        currentUser:null,
-        errorMessage:null
+    getCollection =() =>{
+        const [loading,setloading] = useState(true)
+        firestore()
+        .collection("Events")
+        .where("Status", "==", "current")
+        .get()
+        .then(querySnapshot=>{
+
+            querySnapshot.forEach(documentSnapshot =>{
+            event = documentSnapshot.data()
+            })
+    })
+        .then(() => setloading(false))
+        
+        if(loading)
+            return <ActivityIndicator size = 'large' color='#75db1b'/>
+        return (
+            <View>
+                <Text style={{fontSize:18}}>Recent Event:</Text>
+                <View style ={{justifyContents:'center', alignItems:"center"}}>
+                    <Text style={{fontSize:23,fontWeight:'bold', padding:7}}>{event.Name}</Text>
+                    <Text>{event.Date}, {event.Time}</Text>
+                    <Text>{event.Venue}</Text>
+                </View>                
+                <View style={{marginTop:15}}>
+                    <Text style={{fontSize:18}}>{event.Description}</Text>
+                </View>
+            </View>
+        );
     }
     componentDidMount(){
-        const {currentUser} = auth()
-        this.setState({currentUser})
     }
     render(){
-        const {currentUser} = this.state 
         return(
             <ScrollView>
                <View style = {styles.Home}>
                 <View style={{flex:1, justifyContents:'center', alignItems:'center', fontSize:35}}>
-                          <Text>This is home screen</Text>
+                    <Text style ={{fontSize:28, fontWeight:"bold",paddingBottom:15}}>Hi! {user.displayName}</Text>
                 </View>
             <View>
+                <this.getCollection/>
             <Text style={styles.text}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
+
             </Text>
             </View>
             <View>

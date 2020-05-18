@@ -47,7 +47,7 @@ export default class SignupScreen extends Component{
 		  {
 			  alert("Enter password")
 		  }
-		  else if(password.length<6)
+		  else if(this.state.password.length<6)
 		  {
 			this.setState({errorMessage:'Password cannot be less than 6 characters'})
 		  }
