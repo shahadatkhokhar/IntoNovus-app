@@ -17,7 +17,7 @@ let event
 export default class HomeScreen extends Component{
     componentDidMount() {
         this._isMounted = true;
-      }
+      } 
     
       componentWillUnmount() {
         this._isMounted = false;

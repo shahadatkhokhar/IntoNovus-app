@@ -16,6 +16,10 @@ export default class SignupScreen extends Component{
 	state={
 		name:"",
 		institute:"",
+<<<<<<< HEAD
+=======
+		contact:"",
+>>>>>>> fc82dd4dce558853ba26c6a789f61e01cb255500
 		email:"",
 		password:"",
 		confirm:"",
@@ -38,11 +42,22 @@ export default class SignupScreen extends Component{
 		  {
 			  alert("Enter Email")
 		  }
+<<<<<<< HEAD
+=======
+		  else if(this.state.contact==="")
+		  {
+			  alert("Enter Contact Number")
+		  }
+>>>>>>> fc82dd4dce558853ba26c6a789f61e01cb255500
 		  else if(this.state.password==="")
 		  {
 			  alert("Enter password")
 		  }
+<<<<<<< HEAD
 		  else if(this.state.password.length<6)
+=======
+		  else if(password.length<6)
+>>>>>>> fc82dd4dce558853ba26c6a789f61e01cb255500
 		  {
 			this.setState({errorMessage:'Password cannot be less than 6 characters'})
 		  }
@@ -53,11 +68,17 @@ export default class SignupScreen extends Component{
 			.then(()=>{
 				var user =auth().currentUser
 				user.sendEmailVerification();
+<<<<<<< HEAD
 				user.updateProfile({
 					displayName:this.state.name
 				})
 				var dbUser = firestore().collection('Users')
 				.doc(user.uid).set({
+=======
+				var dbUser = firestore().collection('Users')
+				.doc(user.uid).set({
+					contact:this.state.contact,
+>>>>>>> fc82dd4dce558853ba26c6a789f61e01cb255500
 					email:this.state.email,
 					institute:this.state.institute,
 					name:this.state.name
@@ -93,6 +114,16 @@ export default class SignupScreen extends Component{
 						<View style = {styles.inputView}>
 							<TextInput
 								style={styles.inputText}
+<<<<<<< HEAD
+=======
+								placeholder="Contact no."
+								placeholderTextColor="#696969"
+								onChangeText={text => this.setState({contact:text})}/>
+						</View>
+						<View style = {styles.inputView}>
+							<TextInput
+								style={styles.inputText}
+>>>>>>> fc82dd4dce558853ba26c6a789f61e01cb255500
 								placeholder="Email"
 								placeholderTextColor="#696969"
 								onChangeText={text => this.setState({email:text})}/>

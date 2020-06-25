@@ -6,12 +6,6 @@ import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer'
 import HomeScreen from './Container/Home.js'
 import ContactScreen from './Container/ContactUs.js'
 import AboutScreen from './Container/About'
-import EventScreen from './Container/Events'
-import ProfileScreen from './Container/Profile'
-<<<<<<< HEAD
-import EditProfileScreen from './Container/EditProfile.js'
-=======
->>>>>>> fc82dd4dce558853ba26c6a789f61e01cb255500
 
 const Drawer = createDrawerNavigator()
 const HomeStack = createStackNavigator()
@@ -89,7 +83,7 @@ function ProfileStackScreen(){
     <ProfileStack.Navigator>
       <ProfileStack.Screen
         name="ProfileScreen"
-        component={ProfileScreen}
+        component={AboutScreen}
         options={{  
           title:"Profile",
           headerStyle:{
@@ -101,24 +95,6 @@ function ProfileStackScreen(){
           },
         }}
       />
-<<<<<<< HEAD
-      <ProfileStack.Screen
-        name="EditInfo"
-        component={EditProfileScreen}
-        options={{  
-          title:"Profile",
-          headerStyle:{
-            backgroundColor:'#000000',
-          },
-          headerTitleStyle:{
-            fontWeight:'bold',
-            color:'#fff'
-          },
-          headerLeft:null
-        }}
-      />
-=======
->>>>>>> fc82dd4dce558853ba26c6a789f61e01cb255500
     </ProfileStack.Navigator>
   );
 
@@ -129,7 +105,7 @@ function EventStackScreen(){
     <EventStack.Navigator>
       <EventStack.Screen
         name="EventScreen"
-        component={EventScreen}
+        component={ContactScreen}
         options={{  
           title:"Events",
           headerStyle:{
@@ -141,10 +117,6 @@ function EventStackScreen(){
           },
         }}
       />
-<<<<<<< HEAD
-      
-=======
->>>>>>> fc82dd4dce558853ba26c6a789f61e01cb255500
     </EventStack.Navigator>
   );
 }
@@ -155,10 +127,6 @@ export default function SigninStack() {
     <NavigationContainer>
       <Drawer.Navigator 
       initialRouteName='Home'
-<<<<<<< HEAD
-      edgeWidth={500}
-=======
->>>>>>> fc82dd4dce558853ba26c6a789f61e01cb255500
       drawerStyle={{
         backgroundColor:'#000000',
         width:200,
@@ -178,12 +146,12 @@ export default function SigninStack() {
         <Drawer.Screen
         name="Profile" 
         component={ProfileStackScreen}
-          />
+        />
 
-          <Drawer.Screen
-          name="Events" 
-          component={EventStackScreen} 
-          />
+        <Drawer.Screen
+        name="Events" 
+        component={EventStackScreen}
+        />
 
         <Drawer.Screen
           name="Contact" 
