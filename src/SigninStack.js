@@ -8,6 +8,7 @@ import ContactScreen from './Container/ContactUs.js'
 import AboutScreen from './Container/About'
 import EventScreen from './Container/Events'
 import ProfileScreen from './Container/Profile'
+import EditProfileScreen from './Container/EditProfile.js'
 
 const Drawer = createDrawerNavigator()
 const HomeStack = createStackNavigator()
@@ -97,6 +98,21 @@ function ProfileStackScreen(){
           },
         }}
       />
+      <ProfileStack.Screen
+        name="EditInfo"
+        component={EditProfileScreen}
+        options={{  
+          title:"Profile",
+          headerStyle:{
+            backgroundColor:'#000000',
+          },
+          headerTitleStyle:{
+            fontWeight:'bold',
+            color:'#fff'
+          },
+          headerLeft:null
+        }}
+      />
     </ProfileStack.Navigator>
   );
 
@@ -130,6 +146,7 @@ export default function SigninStack() {
     <NavigationContainer>
       <Drawer.Navigator 
       initialRouteName='Home'
+      edgeWidth={500}
       drawerStyle={{
         backgroundColor:'#000000',
         width:200,

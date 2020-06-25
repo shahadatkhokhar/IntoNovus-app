@@ -11,16 +11,26 @@ import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
 import Icon from 'react-native-vector-icons/Feather'
 
+
 const user = auth().currentUser
 export default class ProfileScreen extends Component{
+    componentDidMount() {
+        this._isMounted = true;
+      }
+    
+      componentWillUnmount() {
+        this._isMounted = false;
+      }
+      
     state = {
         name:"",
         institute:"",
         email:"",
-        contact:'',
         isloading:true
     }
+
     setData = () =>{
+        this.state = this.defaultState
         firestore()
         .collection('Users')
         .doc(user.uid)
@@ -29,7 +39,6 @@ export default class ProfileScreen extends Component{
             this.setState({name:documentSnapshot.get('name')}),
             this.setState({institute:documentSnapshot.get('institute')}),
             this.setState({email:documentSnapshot.get('email')})
-            this.setState({contact:documentSnapshot.get('contact')})
         })
         .then(()=>this.setState({isloading:false}));
         return null;
@@ -48,7 +57,7 @@ export default class ProfileScreen extends Component{
                         <StatusBar backgroundColor='black' barStyle='light-content'/>
                     </View>
                     <View style={{flex:1, justifyContents:'center', alignItems:'center'}}>
-                        <ActivityIndicator size="large" color="75db1b"/>
+                        <ActivityIndicator size="large" color="#75db1b"/>
                         <this.setData/>                
                     </View>
                 </View>
@@ -60,31 +69,27 @@ export default class ProfileScreen extends Component{
                     <View>
                         <StatusBar backgroundColor='black' barStyle='light-content'/>
                     </View>
-                        <TouchableOpacity style = {{flexDirection:'row',justifyContent:'flex-end',padding:7}}>
+                        <TouchableOpacity style = {{flexDirection:'row',justifyContent:'flex-end',padding:7}}
+                        onPress={()=>this.props.navigation.navigate('EditInfo')}>
                             <Icon name='edit' size={34}/>  
                         </TouchableOpacity>
                     <View style={styles.profileScreen}>
                         <TouchableOpacity style={styles.profilePhoto}>
                             <Text>Profile Photo</Text>
                         </TouchableOpacity>
-                    <Text style={{fontSize:35, fontWeight:'bold'}}>{this.state.name}</Text>
+                    <Text style={{fontSize:35, fontWeight:'bold'}}>{user.displayName}</Text>
 
                     <View style={{flexDirection:'row',margin:5}}>
                     <Text style={{fontSize:17, fontWeight:'bold'}}>From: </Text>
                     <Text style={{fontSize:17}}>{this.state.institute}</Text>
                     </View>
 
-                    <View style={{flexDirection:'row',margin:5}}>
+                    <View style={{flexDirection:'row',margin:5, paddingBottom:30}}>
                     <Text style={{fontSize:17, fontWeight:'bold'}}>Email: </Text> 
                     <Text style={{fontSize:17}}>{this.state.email}</Text>
                     </View>
-
-                    <View style={{flexDirection:'row',margin:5}}>
-                    <Text style={{fontSize:17, fontWeight:'bold'}}>Contact: </Text> 
-                    <Text style={{fontSize:17}}>{this.state.contact}</Text>
-                    </View>
-
-                    <TouchableOpacity style={styles.signupBtn} 
+                    
+                    <TouchableOpacity style={styles.LogoutBtn} 
                         onPress= {this.handleLogout}>
                             <Text>Logout</Text>
                     </TouchableOpacity>

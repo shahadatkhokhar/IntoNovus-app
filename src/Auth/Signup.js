@@ -16,7 +16,6 @@ export default class SignupScreen extends Component{
 	state={
 		name:"",
 		institute:"",
-		contact:"",
 		email:"",
 		password:"",
 		confirm:"",
@@ -39,10 +38,6 @@ export default class SignupScreen extends Component{
 		  {
 			  alert("Enter Email")
 		  }
-		  else if(this.state.contact==="")
-		  {
-			  alert("Enter Contact Number")
-		  }
 		  else if(this.state.password==="")
 		  {
 			  alert("Enter password")
@@ -63,7 +58,6 @@ export default class SignupScreen extends Component{
 				})
 				var dbUser = firestore().collection('Users')
 				.doc(user.uid).set({
-					contact:this.state.contact,
 					email:this.state.email,
 					institute:this.state.institute,
 					name:this.state.name
@@ -95,13 +89,6 @@ export default class SignupScreen extends Component{
 								placeholder="Institute"
 								placeholderTextColor="#696969"
 								onChangeText={text => this.setState({institute:text})}/>
-						</View>
-						<View style = {styles.inputView}>
-							<TextInput
-								style={styles.inputText}
-								placeholder="Contact no."
-								placeholderTextColor="#696969"
-								onChangeText={text => this.setState({contact:text})}/>
 						</View>
 						<View style = {styles.inputView}>
 							<TextInput

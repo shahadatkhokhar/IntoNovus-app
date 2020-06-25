@@ -15,6 +15,13 @@ import firestore from '@react-native-firebase/firestore'
 user = auth().currentUser
 let event
 export default class HomeScreen extends Component{
+    componentDidMount() {
+        this._isMounted = true;
+      }
+    
+      componentWillUnmount() {
+        this._isMounted = false;
+      }
     getCollection =() =>{
         const [loading,setloading] = useState(true)
         firestore()

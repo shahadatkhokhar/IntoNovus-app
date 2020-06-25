@@ -99,7 +99,38 @@ const styles = StyleSheet.create({
 		width:width,
 		borderRadius:100,
 		padding:10,
-	}
+	},
+	LogoutBtn:
+	{
+		width:"40%",
+		backgroundColor:"#75db1b",
+		borderRadius:40,
+		height:50,
+		alignItems:"center",
+		justifyContent:"center",
+		marginTop:10,
+		marginBottom:10
+	},
+	
+	ProfileEdit: {
+		flex:1,
+		alignItems: 'center',
+    	justifyContent: 'center',
+  	},
+	ProfileEditView:{
+		width:"80%",
+		backgroundColor:"#9b9b9b",
+		borderRadius:25,
+		height:50,
+		marginBottom:20,
+		justifyContent:"center",
+		padding:20
+	},
+	ProfileEditText:
+	{
+		height:50,
+		color:"white"
+	},
 });
 
 export default styles;
