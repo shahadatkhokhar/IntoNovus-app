@@ -15,6 +15,10 @@ import firestore from '@react-native-firebase/firestore'
 user = auth().currentUser
 let event
 export default class HomeScreen extends Component{
+    state ={
+        name:"",
+        loadingname:true
+    }
     componentDidMount() {
         this._isMounted = true;
       } 
@@ -22,6 +26,17 @@ export default class HomeScreen extends Component{
       componentWillUnmount() {
         this._isMounted = false;
       }
+    getName=()=>{
+        firestore()
+        .collection('Users')
+        .doc(user.uid)
+        .get()
+        .then(documentSnapshot =>{
+            this.setState({name:documentSnapshot.get('name')})
+        })
+        .then(()=>this.setState({loadingname:false}));
+        return null;
+    }
     getCollection =() =>{
         const [loading,setloading] = useState(true)
         firestore()
@@ -52,14 +67,21 @@ export default class HomeScreen extends Component{
             </View>
         );
     }
-    componentDidMount(){
-    }
+  
     render(){
+        if(this.state.loadingname){
+            return(
+            <View>
+            <ActivityIndicator size = 'large' color='#75db1b'/>
+            <this.getName/>
+            </View>
+            );
+        }
         return(
             <ScrollView>
                <View style = {styles.Home}>
                 <View style={{flex:1, justifyContents:'center', alignItems:'center', fontSize:35}}>
-                    <Text style ={{fontSize:28, fontWeight:"bold",paddingBottom:15}}>Hi! {user.displayName}</Text>
+                    <Text style ={{fontSize:28, fontWeight:"bold",paddingBottom:15}}>Hi! {this.state.name}</Text>
                 </View>
             <View>
                 <this.getCollection/>
@@ -71,7 +93,6 @@ export default class HomeScreen extends Component{
 				<StatusBar backgroundColor='black' barStyle='light-content'/>
 			</View>
             </View>
-            </ScrollView>
-        )
-    }
+            </ScrollView>   
+            ) }
 }

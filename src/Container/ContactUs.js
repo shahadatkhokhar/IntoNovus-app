@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 import React,{Component, useState} from 'react'
-=======
-import React,{Component} from 'react'
->>>>>>> fc82dd4dce558853ba26c6a789f61e01cb255500
 import {
     View,
     Text,
     StatusBar,
-<<<<<<< HEAD
     TouchableOpacity,
     ActivityIndicator,
     Linking
@@ -51,21 +46,11 @@ export default class ContactScreen extends Component{
 
             else
             return (
-=======
-    TouchableOpacity
-} from 'react-native'
-import styles from '../Styles'
-
-export default class ContactScreen extends Component{
-    render(){
-        return(
->>>>>>> fc82dd4dce558853ba26c6a789f61e01cb255500
             <View style={styles.Home}>
                 <View>
 					<StatusBar backgroundColor='black' barStyle='light-content'/>
 				</View>
                 <View style={{flex:1, justifyContents:'center', alignItems:'center'}}>
-<<<<<<< HEAD
                         <Text style={{fontSize:20, alignItems:'center', justifyContent:'center', padding:10,fontStyle:'italic', fontWeight: 'bold'}}>
                         "Human Beings are defined by how strong connections they have".
                         </Text>
@@ -87,11 +72,5 @@ export default class ContactScreen extends Component{
                 </View>
             </View>
             )
-=======
-                          <Text>This is ContactUs screen</Text>
-                </View>
-            </View>
-        )
->>>>>>> fc82dd4dce558853ba26c6a789f61e01cb255500
     }
 }

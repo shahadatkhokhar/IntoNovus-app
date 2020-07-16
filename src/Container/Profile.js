@@ -4,7 +4,8 @@ import {
     Text,
     StatusBar,
     TouchableOpacity,
-    ActivityIndicator
+    ActivityIndicator,
+    Image
 } from 'react-native'
 import styles from '../Styles'
 import auth from '@react-native-firebase/auth'
@@ -14,23 +15,23 @@ import Icon from 'react-native-vector-icons/Feather'
 
 const user = auth().currentUser
 export default class ProfileScreen extends Component{
-    componentDidMount() {
-        this._isMounted = true;
-      }
-    
-      componentWillUnmount() {
-        this._isMounted = false;
-      }
-      
     state = {
         name:"",
         institute:"",
         email:"",
-        isloading:true
+        imageURI:null,
+        isloading:true,
     }
 
+    componentDidMount() {
+        this._isMounted = true;
+      } 
+    
+      componentWillUnmount() {
+        this._isMounted = false;
+      }
+
     setData = () =>{
-        this.state = this.defaultState
         firestore()
         .collection('Users')
         .doc(user.uid)
@@ -39,6 +40,7 @@ export default class ProfileScreen extends Component{
             this.setState({name:documentSnapshot.get('name')}),
             this.setState({institute:documentSnapshot.get('institute')}),
             this.setState({email:documentSnapshot.get('email')})
+            this.setState({imageURL:documentSnapshot.get('imageURI')})
         })
         .then(()=>this.setState({isloading:false}));
         return null;
@@ -74,8 +76,9 @@ export default class ProfileScreen extends Component{
                             <Icon name='edit' size={34}/>  
                         </TouchableOpacity>
                     <View style={styles.profileScreen}>
-                        <TouchableOpacity style={styles.profilePhoto}>
-                            <Text>Profile Photo</Text>
+                        <TouchableOpacity style={styles.profilePhoto}
+                        onPress = {()=>this.props.navigation.navigate("ProfilePic")}>
+                            <Image source={this.state.imageURL && {uri:this.state.imageURL}} style = {styles.profileImage} />
                         </TouchableOpacity>
                     <Text style={{fontSize:35, fontWeight:'bold'}}>{user.displayName}</Text>
 

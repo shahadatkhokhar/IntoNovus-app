@@ -131,6 +131,28 @@ const styles = StyleSheet.create({
 		height:50,
 		color:"white"
 	},
+	ProfilePic:
+	{	flex:1,
+		backgroundColor:"#282b28"
+	},
+	imageContainer:
+	{
+		marginTop:20,
+		marginBottom:20,
+	},
+	imageBox: 
+	{
+		width: 300,
+		height: 300
+	},
+	profileImage:
+	{
+		borderRadius:100,
+		height:200,
+		width:200,
+		alignItems:"center",
+		justifyContent:"center",
+	}
 });
 
 export default styles;

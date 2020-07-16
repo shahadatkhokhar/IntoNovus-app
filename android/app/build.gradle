@@ -82,10 +82,7 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
-<<<<<<< HEAD
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
-=======
->>>>>>> fc82dd4dce558853ba26c6a789f61e01cb255500
 
 /**
  * Set this to true to create two separate APKs instead of one:
