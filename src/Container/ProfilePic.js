@@ -87,17 +87,18 @@ export default class ProfileScreen extends Component{
     
     uploadImage = async() =>{
         //code for emptying the folder first
-        const delref =storage().ref('/Profiles/' + user.uid + '/')
-        
-        delref.list()
-        .then(dir => {
-            dir.items.forEach(fileRef => {
-              this.deleteFile(delref.fullPath, fileRef.name);
+        const ref =storage().ref()
+
+        const fileRef = ref.child('/Profiles/' + user.uid + '/')
+        await fileRef.listAll().then(result=> {
+            result.items.forEach(file=> {
+                console.log(file.name)
+               file.delete();
             });
-        })
-        .catch(error => {
-            console.log(error);
-          });
+        }).catch(function (error) {
+            // Handle any errors
+        });
+            
 //---------------xxxxxxxx----------------
         const {uri} = this.state.image
         const filename = uri.substring(uri.lastIndexOf('/')+1)
@@ -126,12 +127,12 @@ export default class ProfileScreen extends Component{
         this.setState({uploading:false})
         Alert.alert('Finished Uploading')
         this.setState({image:null})
+        this.props.navigation.reset({
+            index:0,
+            routes:[{name:'ProfileScreen'}]
+        })
     }
-    
-    checkStatus =() =>{
-        
 
-    }
     render(){
             return(
                 <View style={styles.ProfilePic}>

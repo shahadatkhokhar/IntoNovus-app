@@ -5,15 +5,24 @@ import {
     StatusBar,
     TouchableOpacity,
     ActivityIndicator,
-    Image
+    Image,
+    Alert,
+    
 } from 'react-native'
 import styles from '../Styles'
+import {NavigationEvents} from 'react-navigation'
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
 import Icon from 'react-native-vector-icons/Feather'
+import RNRestart from 'react-native-restart';
+import { useIsFocused } from '@react-navigation/native';
+
+
 
 
 const user = auth().currentUser
+
+
 export default class ProfileScreen extends Component{
     state = {
         name:"",
@@ -25,10 +34,12 @@ export default class ProfileScreen extends Component{
 
     componentDidMount() {
         this._isMounted = true;
+        
       } 
     
       componentWillUnmount() {
         this._isMounted = false;
+        this.setState({isloading:true})
       }
 
     setData = () =>{
@@ -51,9 +62,16 @@ export default class ProfileScreen extends Component{
         //.then(()=>this.props.navigation.navigate('Login'))
         .catch(error => this.setState({errorMessage:error.message}));
     }
+    checkFocus=()=>{
+        const isFocused = useIsFocused();
+        return isFocused
+    }
+
     render(){
+        const isFocused = this.checkFocus
         if(this.state.isloading==true){
             return(
+                
                 <View style={styles.Home}>
                     <View>
                         <StatusBar backgroundColor='black' barStyle='light-content'/>
@@ -80,7 +98,7 @@ export default class ProfileScreen extends Component{
                         onPress = {()=>this.props.navigation.navigate("ProfilePic")}>
                             <Image source={this.state.imageURL && {uri:this.state.imageURL}} style = {styles.profileImage} />
                         </TouchableOpacity>
-                    <Text style={{fontSize:35, fontWeight:'bold'}}>{user.displayName}</Text>
+                    <Text style={{fontSize:35, fontWeight:'bold'}}>{this.state.name}</Text>
 
                     <View style={{flexDirection:'row',margin:5}}>
                     <Text style={{fontSize:17, fontWeight:'bold'}}>From: </Text>

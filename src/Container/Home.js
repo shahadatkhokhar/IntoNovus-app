@@ -4,6 +4,7 @@ import {
     Text,
     StatusBar,
     ScrollView,
+    RefreshControl,
     TouchableOpacity,
     ActivityIndicator
 } from 'react-native'
@@ -11,13 +12,15 @@ import styles from '../Styles'
 import {createStackNavigator} from '@react-navigation/stack'
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
+import { useIsFocused } from '@react-navigation/native'
 
 user = auth().currentUser
 let event
 export default class HomeScreen extends Component{
     state ={
         name:"",
-        loadingname:true
+        loadingname:true,
+        loading:true
     }
     componentDidMount() {
         this._isMounted = true;
@@ -38,7 +41,6 @@ export default class HomeScreen extends Component{
         return null;
     }
     getCollection =() =>{
-        const [loading,setloading] = useState(true)
         firestore()
         .collection("Events")
         .where("Status", "==", "current")
@@ -49,9 +51,8 @@ export default class HomeScreen extends Component{
             event = documentSnapshot.data()
             })
     })
-        .then(() => setloading(false))
-        
-        if(loading)
+        .then(() => this.setState({loading:false}))
+        if(this.state.loading)
             return <ActivityIndicator size = 'large' color='#75db1b'/>
         return (
             <View>
@@ -67,7 +68,13 @@ export default class HomeScreen extends Component{
             </View>
         );
     }
-  
+    _onRefresh = () => {
+        this.setState({loadingname:true})
+        this.setState({loading:true})
+        this.getName()
+        this.getCollection()
+      }
+   
     render(){
         if(this.state.loadingname){
             return(
@@ -78,7 +85,11 @@ export default class HomeScreen extends Component{
             );
         }
         return(
-            <ScrollView>
+            <ScrollView
+            refreshControl={
+                <RefreshControl
+                  onRefresh={this._onRefresh}/>}
+            >
                <View style = {styles.Home}>
                 <View style={{flex:1, justifyContents:'center', alignItems:'center', fontSize:35}}>
                     <Text style ={{fontSize:28, fontWeight:"bold",paddingBottom:15}}>Hi! {this.state.name}</Text>

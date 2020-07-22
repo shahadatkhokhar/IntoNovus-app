@@ -11,6 +11,7 @@ import {
 import styles from '../Styles'
 import firestore from '@react-native-firebase/firestore'
 import auth from '@react-native-firebase/auth'
+import { ThemeProvider } from '@react-navigation/native';
 
 
 user = auth().currentUser
@@ -19,17 +20,6 @@ export default class SignupScreen extends Component{
 		name:"",
 		institute:"",
 		errorMessage:null
-      }
-      getData=() =>{
-        firestore()
-        .collection('Users')
-        .doc(user.uid)
-        .get()
-        .then(documentSnapshot =>{
-            this.setState({name:documentSnapshot.get('name')}),
-            this.setState({institute:documentSnapshot.get('institute')})
-		})
-		.catch(error => this.setState({errorMessage:error.message}))
       }
 	  handleEdit=()=>{
 				var user =auth().currentUser
@@ -41,7 +31,15 @@ export default class SignupScreen extends Component{
 					institute:this.state.institute,
 					name:this.state.name
 				})
-				this.props.navigation.navigate('ProfileScreen')
+				.then(()=>{
+					this.setState({name:""})
+					this.setState({institute:""})
+					this.props.navigation.reset({
+						index:0,
+						routes:[{name:'ProfileScreen'}]
+					})
+				})
+				
 	  }
 	  
 	  render(){
@@ -72,9 +70,6 @@ export default class SignupScreen extends Component{
 						onPress = {this.handleEdit} >
 							<Text>Update</Text>
 						</TouchableOpacity>
-						<View>
-							<Text style={{fontSize:10}}>Changes will take place after the app restarts</Text>
-						</View>
 				</View>
 		);
 	}
