@@ -28,7 +28,7 @@ function HomeStackScreen(){
         options={{  
           title:"Home",
           headerStyle:{
-            backgroundColor:'#000000',
+            backgroundColor:'#1f211f',
           },
           headerTitleStyle:{
             fontWeight:'bold',
@@ -49,7 +49,7 @@ function ContactStackScreen(){
         options={{  
           title:"Contact Us",
           headerStyle:{
-            backgroundColor:'#000000',
+            backgroundColor:'#1f211f',
           },
           headerTitleStyle:{
             fontWeight:'bold',
@@ -70,7 +70,7 @@ function AboutStackScreen(){
         options={{  
           title:"About Us",
           headerStyle:{
-            backgroundColor:'#000000',
+            backgroundColor:'#1f211f',
           },
           headerTitleStyle:{
             fontWeight:'bold',
@@ -91,7 +91,7 @@ function ProfileStackScreen(){
         options={{  
           title:"Profile",
           headerStyle:{
-            backgroundColor:'#000000',
+            backgroundColor:'#1f211f',
           },
           headerTitleStyle:{
             fontWeight:'bold',
@@ -105,7 +105,7 @@ function ProfileStackScreen(){
         options={{  
           title:"Profile",
           headerStyle:{
-            backgroundColor:'#000000',
+            backgroundColor:'#1f211f',
           },
           headerTitleStyle:{
             fontWeight:'bold',
@@ -137,7 +137,7 @@ function EventStackScreen(){
         options={{  
           title:"Events",
           headerStyle:{
-            backgroundColor:'#000000',
+            backgroundColor:'#1f211f',
           },
           headerTitleStyle:{
             fontWeight:'bold',
@@ -158,7 +158,7 @@ export default function SigninStack() {
       initialRouteName='Home'
       edgeWidth={500}
       drawerStyle={{
-        backgroundColor:'#000000',
+        backgroundColor:'#1f211f',
         width:200,
         }}
         drawerContentOptions={{

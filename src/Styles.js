@@ -76,7 +76,11 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	text:{
-		fontSize:40
+		fontSize:20,
+		paddingTop:30,
+		paddingBottom:20,
+		fontWeight:"bold"
+
 	},
 	profilePhoto:{
 		backgroundColor:"#696969",
