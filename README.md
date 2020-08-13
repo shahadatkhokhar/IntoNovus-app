@@ -1,5 +1,8 @@
 # IntoNovus-app
 
+An App made in React-native with Firebase as backend.
+
+
 An App for all the members of IntoNovus club
 
 ## Screenshots
